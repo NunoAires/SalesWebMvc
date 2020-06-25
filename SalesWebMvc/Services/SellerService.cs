@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace SalesWebMvc.Services
         }
         public void Insert(Seller obj)
         {
+            obj.Department = _context.Department.First();
             _context.Add(obj);
             _context.SaveChanges();
         }
